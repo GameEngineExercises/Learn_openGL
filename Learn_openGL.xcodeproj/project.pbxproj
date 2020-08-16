@@ -10,6 +10,7 @@
 		AF1A99FC24E8EF80005142BE /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF1A99FB24E8EF80005142BE /* OpenGL.framework */; };
 		AF1A99FE24E8EF8C005142BE /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AF1A99FD24E8EF8C005142BE /* libglfw.3.3.dylib */; };
 		AF1A9A0024E8EF99005142BE /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AF1A99FF24E8EF99005142BE /* libGLEW.2.1.0.dylib */; };
+		AF1A9A0324E8F005005142BE /* Learn_openGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF1A9A0224E8F005005142BE /* Learn_openGL.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +31,7 @@
 		AF1A99FD24E8EF8C005142BE /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../usr/local/Cellar/glfw/3.3.2/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		AF1A99FF24E8EF99005142BE /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = ../../../usr/local/Cellar/glew/2.1.0_1/lib/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
 		AF1A9A0124E8EFB7005142BE /* Learn_openGL.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Learn_openGL.entitlements; sourceTree = "<group>"; };
+		AF1A9A0224E8F005005142BE /* Learn_openGL.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Learn_openGL.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				AF1A9A0124E8EFB7005142BE /* Learn_openGL.entitlements */,
+				AF1A9A0224E8F005005142BE /* Learn_openGL.cpp */,
 			);
 			path = Learn_openGL;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF1A9A0324E8F005005142BE /* Learn_openGL.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
