@@ -11,9 +11,14 @@
 
 //Vertex data[]
 float vertices[] = {
+    // first triangle
     -0.5f, -0.5f, 0.0f,
      0.5f, -0.5f, 0.0f,
-     0.0f,  0.5f, 0.0f
+     0.0f,  0.5f, 0.0f,
+    // second triangle
+    0.5f, -0.5f, 0.0f,
+    0.0f, 0.5f, 0.0f,
+    0.8f, 0.8f, 0.0f
 };
 
 //vertexShader in GLSL (Shading Language)
@@ -120,7 +125,9 @@ int main()
         //draw the triangle
         glBindVertexArray(VAO); //Bind VAO
         glUseProgram(shaderProgram); //To rander an object
-        glDrawArrays(GL_TRIANGLES, 0, 3); //draw the object
+        //draw the object
+        //glDrawArrays(GL_TRIANGLES, 0, 3); // last argument: 3 vertices(triangle)
+        glDrawArrays(GL_TRIANGLES, 0, 6); // 6 vertices(Two triangles replace rectangle)
         
         glfwSwapBuffers(window); //Swap color buffer for each piexls and show output to screen.
         glfwPollEvents(); // Check any events are triggered.(like keyboard or mouse events)
