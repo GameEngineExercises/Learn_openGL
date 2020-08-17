@@ -12,13 +12,19 @@
 //Vertex data[]
 float vertices[] = {
     // first triangle
-    -0.5f, -0.5f, 0.0f,
-     0.5f, -0.5f, 0.0f,
-     0.0f,  0.5f, 0.0f,
+    -0.5f, -0.5f, 0.0f, //index 0
+     0.5f, -0.5f, 0.0f, //index 1
+     0.0f,  0.5f, 0.0f, //index 2
     // second triangle
-    0.5f, -0.5f, 0.0f,
-    0.0f, 0.5f, 0.0f,
-    0.8f, 0.8f, 0.0f
+    //0.5f, -0.5f, 0.0f, // = index 1
+    //0.0f,  0.5f, 0.0f, // = index 2
+    0.8f, 0.8f, 0.0f    //index 3
+};
+
+//index data[]
+unsigned int indices[] = {
+    0, 1, 2, //first triangle
+    2, 1, 3  //second triangle
 };
 
 //vertexShader in GLSL (Shading Language)
@@ -89,6 +95,12 @@ int main()
     //Step2-2: Bind VBO on the VAO : copy user-defined data into the currently bound buffer (CPU to GPU)
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
     
+    //Use Element Buffer Objects(EBO)
+    unsigned int EBO;
+    glGenBuffers(1, &EBO); //generate EBO
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    
     //Create->Attach->Compiling on vertexShader
     unsigned int vertexShader;
     vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -111,7 +123,7 @@ int main()
     //Linking Vertex Attibutes
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0); //Enable vertex attibutes
-    
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //drawn in wireframe mode.
     
     //Ready engines(keep drawing until stop program)
     while (!glfwWindowShouldClose(window)) //render loop window
@@ -124,10 +136,12 @@ int main()
         
         //draw the triangle
         glBindVertexArray(VAO); //Bind VAO
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO); //Bind EBO
         glUseProgram(shaderProgram); //To rander an object
         //draw the object
         //glDrawArrays(GL_TRIANGLES, 0, 3); // last argument: 3 vertices(triangle)
-        glDrawArrays(GL_TRIANGLES, 0, 6); // 6 vertices(Two triangles replace rectangle)
+        //glDrawArrays(GL_TRIANGLES, 0, 6); // 6 vertices(Two triangles replace rectangle)
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
         
         glfwSwapBuffers(window); //Swap color buffer for each piexls and show output to screen.
         glfwPollEvents(); // Check any events are triggered.(like keyboard or mouse events)
