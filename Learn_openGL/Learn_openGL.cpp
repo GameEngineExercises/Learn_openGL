@@ -8,6 +8,7 @@
 # include <iostream>
 # include <GL/glew.h> //Using GLEW (but Learn_File is using GLAD)
 # include <GLFW/glfw3.h> // GLFW : gernerate window
+# include <cmath>
 
 //Vertex data[]
 float vertices[] = {
@@ -44,10 +45,12 @@ const char* fragmentShaderSource =
 "#version 330 core                                                \n"
 "out vec4 FragColor;                                              \n"
 
+"uniform vec4 ourColor;                                           \n"
+
 "in vec4 vertexColor;                                             \n"
 
 "void main(){                                                     \n"
-"    FragColor = vertexColor;}                                    \n";
+"    FragColor = ourColor;}                                    \n";
 
 void processInput(GLFWwindow* window)
 {
@@ -145,7 +148,14 @@ int main()
         //draw the triangle
         glBindVertexArray(VAO); //Bind VAO
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO); //Bind EBO
+        
+        float timeValue = glfwGetTime();
+        float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
+        int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
+        
         glUseProgram(shaderProgram); //To rander an object
+        
+        glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
         //draw the object
         //glDrawArrays(GL_TRIANGLES, 0, 3); // last argument: 3 vertices(triangle)
         //glDrawArrays(GL_TRIANGLES, 0, 6); // 6 vertices(Two triangles replace rectangle)
