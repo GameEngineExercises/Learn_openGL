@@ -12,11 +12,11 @@
 
 float vertices[] = {
     //index          // color
-    0.5f, 0.5f, 0.0f, 0.8f, 0.0f, 1.0f, //0,
-    0.3f, -0.4f, 0.0f, 0.0f, 0.0f, 1.0f,    //1, blue
-    -0.3f, -0.4f, 0.0f,  0.0f, 1.0f, 0.0f,   //2, green
+    0.5f, 0.5f, 0.0f, 0.6f, 0.4f, 0.0f, //0, yellow
+    0.3f, -0.4f, 0.0f, 0.0f, 0.7f, 0.0f,    //1, green
+    -0.3f, -0.4f, 0.0f,  0.0f, 0.0f, 0.7f,   //2, blue
     0.0f, 0.8f, 0.0f, 1.0f, 0.0f, 0.0f, //3, red
-    -0.5f, 0.5f, 0.0f, 0.3f, 0.0f, 0.9f//4
+    -0.5f, 0.5f, 0.0f, 0.6f, 0.0f, 0.4f//4, purple
 };
 
 unsigned int indices[] = {
