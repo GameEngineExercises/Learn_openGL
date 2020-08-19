@@ -8,6 +8,7 @@
 #include <iostream>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include "Shader.h"
 
 float vertices[] = {
     //index          // color
@@ -24,6 +25,7 @@ unsigned int indices[] = {
     2, 4, 3
 };
 
+/*
 //vertexShader in GLSL (Shading Language)
 const char* vertexShaderSource =
 "#version 330 core                                                \n"
@@ -46,6 +48,7 @@ const char* fragmentShaderSource =
 
 "void main(){                                                     \n"
 "    FragColor = vec4(ourColor, 1.0);}                   \n";
+*/
 
 int main()
 {
@@ -76,6 +79,8 @@ int main()
         return -1;
     }
     
+    Shader* loadShader = new Shader("vertexSource.txt", "fragmentSource.txt");
+    
     unsigned int VAO;
     glGenVertexArrays(1, &VAO); //Gen
     glBindVertexArray(VAO); //Bind VAO
@@ -86,12 +91,13 @@ int main()
     
     //Bind vertices to buffer
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-    
+        
     unsigned int EBO;
     glGenBuffers(1, &EBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
     
+    /*
     // Create shader -> GLSL Souce -> Compile
     unsigned int vertexShader;
     vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -109,6 +115,7 @@ int main()
     glAttachShader(shaderProgram, vertexShader);
     glAttachShader(shaderProgram, fragmentShader);
     glLinkProgram(shaderProgram);
+    */
     
     // Vertex attributes
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
@@ -129,7 +136,8 @@ int main()
         
         glBindVertexArray(VAO);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-        glUseProgram(shaderProgram);
+        //glUseProgram(shaderProgram);
+        loadShader->use();
         glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);
         
         glfwSwapBuffers(window); //color buffer process

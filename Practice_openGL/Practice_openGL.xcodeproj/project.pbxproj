@@ -11,6 +11,7 @@
 		175BF20124EB7C5800BCE55E /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 175BF20024EB7C5800BCE55E /* libglfw.3.3.dylib */; };
 		175BF20324EB7C6800BCE55E /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 175BF20224EB7C6800BCE55E /* libGLEW.2.1.0.dylib */; };
 		175BF20624EB7CAE00BCE55E /* Practice_openGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 175BF20524EB7CAE00BCE55E /* Practice_openGL.cpp */; };
+		AFA472DC24ED643700A85A63 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFA472DB24ED643700A85A63 /* Shader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +33,10 @@
 		175BF20224EB7C6800BCE55E /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = ../../../../usr/local/Cellar/glew/2.1.0_1/lib/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
 		175BF20424EB7C8900BCE55E /* Practice_openGL.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Practice_openGL.entitlements; sourceTree = "<group>"; };
 		175BF20524EB7CAE00BCE55E /* Practice_openGL.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Practice_openGL.cpp; sourceTree = "<group>"; };
+		AFA472DB24ED643700A85A63 /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
+		AFA472DD24ED644F00A85A63 /* Shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
+		AFA472DE24ED690E00A85A63 /* vertexSource.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = vertexSource.txt; sourceTree = "<group>"; };
+		AFA472DF24ED691F00A85A63 /* fragmentSource.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragmentSource.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +75,10 @@
 			children = (
 				175BF20424EB7C8900BCE55E /* Practice_openGL.entitlements */,
 				175BF20524EB7CAE00BCE55E /* Practice_openGL.cpp */,
+				AFA472DB24ED643700A85A63 /* Shader.cpp */,
+				AFA472DD24ED644F00A85A63 /* Shader.h */,
+				AFA472DE24ED690E00A85A63 /* vertexSource.txt */,
+				AFA472DF24ED691F00A85A63 /* fragmentSource.txt */,
 			);
 			path = Practice_openGL;
 			sourceTree = "<group>";
@@ -141,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFA472DC24ED643700A85A63 /* Shader.cpp in Sources */,
 				175BF20624EB7CAE00BCE55E /* Practice_openGL.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
