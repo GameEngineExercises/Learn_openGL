@@ -21,6 +21,9 @@ public:
     unsigned int ID;    // Shader program ID
     
     void use();
+    
+private:
+    void checkCompileErrors(unsigned int shader_ID, std::string type);
 };
 
 //#endif /* Shader_h */
