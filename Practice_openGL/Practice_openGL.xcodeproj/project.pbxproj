@@ -27,6 +27,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1750A3E824F38145004DEF0F /* container.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = container.jpg; sourceTree = "<group>"; };
 		175BF1F324EB7C1100BCE55E /* Practice_openGL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Practice_openGL; sourceTree = BUILT_PRODUCTS_DIR; };
 		175BF1FE24EB7C2600BCE55E /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		175BF20024EB7C5800BCE55E /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../usr/local/Cellar/glfw/3.3.2/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
@@ -73,6 +74,7 @@
 		175BF1F524EB7C1100BCE55E /* Practice_openGL */ = {
 			isa = PBXGroup;
 			children = (
+				1750A3E824F38145004DEF0F /* container.jpg */,
 				175BF20424EB7C8900BCE55E /* Practice_openGL.entitlements */,
 				175BF20524EB7CAE00BCE55E /* Practice_openGL.cpp */,
 				AFA472DB24ED643700A85A63 /* Shader.cpp */,

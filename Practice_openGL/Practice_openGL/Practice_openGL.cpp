@@ -10,13 +10,16 @@
 #include <GLFW/glfw3.h>
 #include "Shader.h"
 
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+
 float vertices[] = {
-    //index          // color
-    0.5f, 0.5f, 0.0f, 0.6f, 0.4f, 0.0f, //0, yellow
-    0.3f, -0.4f, 0.0f, 0.0f, 0.7f, 0.0f,    //1, green
-    -0.3f, -0.4f, 0.0f,  0.0f, 0.0f, 0.7f,   //2, blue
-    0.0f, 0.8f, 0.0f, 1.0f, 0.0f, 0.0f, //3, red
-    -0.5f, 0.5f, 0.0f, 0.6f, 0.0f, 0.4f//4, purple
+   //     ---- 位置 ----       ---- 颜色 ----     - 纹理坐标(UV) -
+    0.6f,  0.3f, 0.0f,   0.6f, 0.4f, 0.0f,    1.0f,  0.5f,   //
+     0.4f, -0.4f, 0.0f,   0.0f, 0.7f, 0.0f,   0.7f, -1.0f,   //
+    -0.4f, -0.4f, 0.0f,   0.0f, 0.0f, 0.7f,  -0.7f, -1.0f,   //
+     0.0f,  0.7f, 0.0f,   1.0f, 0.0f, 0.0f,   0.0f,  1.0f,   //
+    -0.6f,  0.3f, 0.0f,   0.6f, 0.0f, 0.4f,  -1.0f,  0.5f,   //
 };
 
 unsigned int indices[] = {
@@ -61,7 +64,7 @@ int main()
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     
     //Create winodw & Bind context
-    GLFWwindow *window = glfwCreateWindow(800, 600, "Practice_openGL", NULL, NULL);
+    GLFWwindow *window = glfwCreateWindow(400, 400, "Practice_openGL", NULL, NULL);
     if(window == NULL)
     {
         printf("Failed to create window");
@@ -97,6 +100,24 @@ int main()
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
     
+    // load and create a texture
+    unsigned int texture;
+    glGenTextures(1, &texture); //Gen
+    glBindTexture(GL_TEXTURE_2D, texture);
+      
+    int width, height, nrChannels;
+    unsigned char *data = stbi_load("container.jpg", &width, &height, &nrChannels, 0);
+    if (data)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        std::cout << "Failed to load texture" << std::endl;
+    }
+    stbi_image_free(data); //release data
+    
     /*
     // Create shader -> GLSL Souce -> Compile
     unsigned int vertexShader;
@@ -118,12 +139,15 @@ int main()
     */
     
     // Vertex attributes
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0); // vertex index = 0
     // color attribute
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1); // vertex index = 1
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glEnableVertexAttribArray(2); // vertex index = 2
     
     // Show on the screen
     // 1. Give location & window size
@@ -134,6 +158,7 @@ int main()
         glClearColor(0, 0.5f, 0.5f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         
+        glBindTexture(GL_TEXTURE_2D, texture);
         glBindVertexArray(VAO);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
         //glUseProgram(shaderProgram);
